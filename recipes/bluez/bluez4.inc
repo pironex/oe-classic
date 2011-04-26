@@ -19,7 +19,7 @@ SRC_URI = "\
 "
 S = "${WORKDIR}/bluez-${PV}"
 
-inherit autotools update-rc.d
+inherit autotools
 
 EXTRA_OECONF = "\
   --enable-gstreamer \
@@ -48,9 +48,6 @@ do_install_append() {
         # at_console doesn't really work with the current state of OE, so punch some more holes so people can actually use BT
         install -m 0644 ${WORKDIR}/bluetooth.conf ${D}/${sysconfdir}/dbus-1/system.d/
 }
-
-INITSCRIPT_NAME = "bluetooth"
-INITSCRIPT_PARAMS = "defaults 23 19"
 
 PACKAGES =+ "gst-plugin-bluez libasound-module-bluez"
 

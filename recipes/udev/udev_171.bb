@@ -25,6 +25,11 @@ SRC_URI[sha256sum] = "1d5c548d7c85d30b3508b82ad88d853e28dddb6c526d0e67aa92ac18af
 
 # generic SRC_URI
 SRC_URI += " \
+       file://udev.rules \
+       file://devfs-udev.rules \
+       file://links.conf \
+       file://permissions.rules \
+       file://run.rules \
        file://mount.sh \
        file://mount.blacklist \
        file://network.sh \
@@ -52,8 +57,8 @@ EXTRA_OECONF += " \
                   --libexecdir=${base_libdir}/udev \
                   --with-rootlibdir=${base_libdir} \
                   --disable-gtk-doc-html \
-                  --with-systemdsystemunitdir=${base_libdir}/systemd/system/ \
 "
+#                  --with-systemdsystemunitdir=${base_libdir}/systemd/system/ \
 
 do_configure_prepend() {
 	cp ${WORKDIR}/gtk-doc.make ${S}
@@ -95,8 +100,17 @@ do_install () {
 	install -d ${D}${sysconfdir}/default
 	install -m 0755 ${WORKDIR}/default ${D}${sysconfdir}/default/udev
 
+ 	cp ${S}/rules/rules.d/* ${D}${sysconfdir}/udev/rules.d/
+
 	install -m 0644 ${WORKDIR}/mount.blacklist     ${D}${sysconfdir}/udev/
 	install -m 0644 ${WORKDIR}/local.rules         ${D}${sysconfdir}/udev/rules.d/local.rules
+	install -m 0644 ${WORKDIR}/permissions.rules   ${D}${sysconfdir}/udev/rules.d/permissions.rules
+	install -m 0644 ${WORKDIR}/run.rules          ${D}${sysconfdir}/udev/rules.d/run.rules
+	install -m 0644 ${WORKDIR}/udev.rules          ${D}${sysconfdir}/udev/rules.d/udev.rules
+	install -m 0644 ${WORKDIR}/links.conf          ${D}${sysconfdir}/udev/links.conf
+	if [ "${UDEV_DEVFS_RULES}" = "1" ]; then
+		install -m 0644 ${WORKDIR}/devfs-udev.rules ${D}${sysconfdir}/udev/rules.d/devfs-udev.rules
+	fi
 
 	touch ${D}${sysconfdir}/udev/saved.uname
 	touch ${D}${sysconfdir}/udev/saved.cmdline

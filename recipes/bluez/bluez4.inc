@@ -14,9 +14,9 @@ RPROVIDES_bluez4-dev = "bluez-libs-dev"
 SRC_URI = "\
   http://www.kernel.org/pub/linux/bluetooth/bluez-${PV}.tar.gz \
   file://fix-dfutool-usb-declaration-mismatch.patch \
-  file://sbc-thumb.patch \
   file://bluetooth.conf \
 "
+#  file://sbc-thumb.patch \
 S = "${WORKDIR}/bluez-${PV}"
 
 inherit autotools

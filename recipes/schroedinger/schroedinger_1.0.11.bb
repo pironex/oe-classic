@@ -1,5 +1,7 @@
 require schroedinger.inc
 
+LICENSE = "MPL-1.1 | LGPLv2 | GPLv2 | MIT"
+
 PR = "${INC_PR}.0"
 
 inherit autotools

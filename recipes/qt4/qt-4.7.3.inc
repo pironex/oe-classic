@@ -46,7 +46,10 @@ do_compile() {
 do_install_append() {
 	install -d ${D}${bindir}
 	for i in rcc uic moc ; do
-		install -m 0755 ${S}/bin/$i ${D}${bindir}/
+		if [ -e ${S}/bin/$i ]
+		then
+			install -m 0755 ${S}/bin/$i ${D}${bindir}/
+		fi
 	done
 
         #Append an E to the qtdemo file

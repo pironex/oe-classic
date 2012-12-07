@@ -27,6 +27,10 @@ do_populate_sdk_append() {
        echo 'export OE_QMAKE_QT_CONFIG=${SDKPATH}/${TARGET_SYS}/${datadir}/${QT_DIR_NAME}/mkspecs/qconfig.pri' >> $script
        echo 'export QMAKESPEC=${SDKPATH}/${TARGET_SYS}/${datadir}/${QT_DIR_NAME}/mkspecs/linux-g++' >> $script
 
+       # make a symbolic link to mkspecs for compatibility with Nokia's SDK
+       # and QTCreator
+       (cd ${SDK_OUTPUT}/${QT_TOOLS_PREFIX}/..; ln -s ${SDKTARGETSYSROOT}/usr/share/qtopia/mkspecs mkspecs;)       
+
        # Repack SDK with new environment-setup
        cd ${SDK_OUTPUT}
        fakeroot tar cfj ${SDK_DEPLOY}/${TOOLCHAIN_OUTPUTNAME}.tar.bz2 .

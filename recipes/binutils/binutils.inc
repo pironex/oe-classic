@@ -3,7 +3,7 @@ HOMEPAGE = "http://www.gnu.org/software/binutils/"
 SECTION = "devel"
 LICENSE = "GPL"
 
-INC_PR = "r13"
+INC_PR = "r14"
 
 COMPATIBLE_TARGET_SYS ?= "(?!nios2)"
 
@@ -41,7 +41,8 @@ S = "${WORKDIR}/binutils-${PV}"
 B = "${S}/build.${HOST_SYS}.${TARGET_SYS}"
 
 EXTRA_OECONF = "--program-prefix=${TARGET_PREFIX} \
-		--enable-shared"
+		--enable-shared \
+		--disable-werror"
 
 # This is necessary due to a bug in the binutils Makefiles
 EXTRA_OEMAKE = "configure-build-libiberty all"

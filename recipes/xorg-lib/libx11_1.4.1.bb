@@ -1,7 +1,10 @@
 require libx11.inc
 #--without-xcb is not an option anymore
 #http://cgit.freedesktop.org/xorg/lib/libX11/commit/?id=15e5eaf62897b3179d1fbe457cb19f886f0449f8
-DEPENDS_virtclass-native = "libxcb-native ${COMMON_DEPENDS}"
+
+inherit gettext
+
+DEPENDS_virtclass-native = "libxcb-native ${COMMON_DEPENDS} zlib"
 PR = "${INC_PR}.0"
 
 SRC_URI[archive.md5sum] = "4603bdbce1bd73cbc140de402fe6ed24"

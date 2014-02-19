@@ -8,8 +8,8 @@ CE_VERSION ?= "latest"
 
 require conf/distro/include/angstrom-codec-engine-${CE_VERSION}-preferred-versions.inc
 
-PREFERRED_VERSION_autoconf = "2.68"
-PREFERRED_VERSION_autoconf-native = "2.68"
+PREFERRED_VERSION_autoconf = "2.65"
+PREFERRED_VERSION_autoconf-native = "2.65"
 PREFERRED_VERSION_automake = "1.11.1"
 PREFERRED_VERSION_automake-native = "1.11.1"
 PREFERRED_VERSION_avahi		= "0.6.30"

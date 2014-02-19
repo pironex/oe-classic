@@ -1,6 +1,6 @@
 require bison.inc
 
-PR = "${INC_PR}.0"
+PR = "${INC_PR}.1"
 
 #SRC_URI = "${GNU_MIRROR}/bison/bison-${PV}.tar.gz"
 

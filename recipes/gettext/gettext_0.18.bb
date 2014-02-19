@@ -2,8 +2,8 @@ DESCRIPTION = "The GNU internationalization library."
 HOMEPAGE = "http://www.gnu.org/software/gettext/gettext.html"
 SECTION = "libs"
 LICENSE = "GPLv3"
-PR = "r6"
-DEPENDS = "libxml2 gettext-native virtual/libiconv ncurses expat"
+PR = "r6.1"
+DEPENDS = "libxml2 gettext-native virtual/libiconv ncurses expat zlib"
 DEPENDS_virtclass-native = "libxml2-native"
 PROVIDES = "virtual/libintl"
 PROVIDES_virtclass-native = "virtual/libintl-native"
@@ -15,6 +15,7 @@ SRC_URI = "${GNU_MIRROR}/gettext/gettext-${PV}.tar.gz \
            file://autotools.patch \
            file://gettext-autoconf-lib-link-no-L.patch \
 	   file://gnulib-uclibc-sched_param-def.patch \
+	   file://remove_gets.patch \
 	  "
 
 SRC_URI_append_libc-uclibc = " file://gettext-error_print_progname.patch"

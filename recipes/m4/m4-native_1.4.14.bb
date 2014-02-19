@@ -1,7 +1,7 @@
 require m4_${PV}.bb
 inherit native
 
-INHIBIT_AUTOTOOLS_DEPS = "1"
+INHIBIT_AUTOTOOLS_DEPS = "1a"
 DEPENDS += "gnu-config-native"
 
 do_configure ()  {

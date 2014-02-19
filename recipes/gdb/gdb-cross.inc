@@ -11,7 +11,7 @@ EXTRA_OECONF = "--with-curses --with-readline"
 do_configure () {
 # override this function to avoid the autoconf/automake/aclocal/autoheader
 # calls for now
-	(cd ${S} && gnu-configize) || die "failure in running gnu-configize"
+#	(cd ${S} && gnu-configize) || die "failure in running gnu-configize"
 
         # Fix for issues when system's texinfo version >= 4.10
         # (See https://bugzilla.redhat.com/show_bug.cgi?id=345621)

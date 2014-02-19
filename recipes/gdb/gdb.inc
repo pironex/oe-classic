@@ -23,7 +23,7 @@ EXTRA_OECONF = "--disable-gdbtk --disable-tui --disable-x \
                 --program-prefix='' --disable-lto"
 
 LDFLAGS_append = " -s"
-export CFLAGS_append=" -L${STAGING_LIBDIR}"
+export CFLAGS_append=" -L${STAGING_LIBDIR} -Wno-error=sizeof-pointer-memaccess"
 
 do_configure () {
 	# override this function to avoid the autoconf/automake/aclocal/autoheader
